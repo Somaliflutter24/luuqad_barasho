@@ -64,15 +64,15 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           TextSpan(
-                            text: ' Every \n',
+                            text: ' One \n',
                             style: TextStyle(
                               fontSize: 32.0,
                               fontWeight: FontWeight.bold,
-                              color: const Color(0xFF6D1B7B).withOpacity(0.3),
+                              color: const Color(0xFF155FFF).withOpacity(0.3),
                             ),
                           ),
                           const TextSpan(
-                            text: 'Type Word \n',
+                            text: 'To One \n',
                             style: TextStyle(
                               fontSize: 32.0,
                               fontWeight: FontWeight.bold,

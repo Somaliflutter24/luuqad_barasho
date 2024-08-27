@@ -3,6 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:luuqad_barasho/screens/home_screen.dart';
+import 'package:luuqad_barasho/screens/setting_screen.dart';
 import 'package:luuqad_barasho/utility/language_dropdown.dart';
 import 'package:luuqad_barasho/utility/translate_from.dart';
 import 'package:luuqad_barasho/utility/translate_to.dart';
@@ -119,7 +120,7 @@ class _PromptScreenState extends State<PromptScreen> {
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
-                      color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                      color: const Color(0xFF155FFF).withOpacity(0.8),
                       width: 0.2,
                     ),
                   ),
@@ -140,10 +141,25 @@ class _PromptScreenState extends State<PromptScreen> {
                     ),
 
                     // text_field icon
-                    const Icon(
-                      Icons.settings_outlined,
+                     IconButton(
+                      icon: Icon(
+                        Icons.settings_outlined,
+                        color: const Color(0xFF155FFF).withOpacity(0.3),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SettingsPage(
+                              
+                            ),
+                          ),
+                        );
+                      },
+                      
+                      
                       color: Color(0xFF000000),
-                      size: 24.0,
+                      
                     ),
                   ],
                 ),
@@ -165,7 +181,7 @@ class _PromptScreenState extends State<PromptScreen> {
                     // Swap_horiz icon
                     Icon(
                       Icons.swap_horiz_rounded,
-                      color: const Color(0xFF6D1B7B).withOpacity(0.3),
+                      color: const Color(0xFF155FFF).withOpacity(0.3),
                     ),
 
                     // language dropdowns to
@@ -225,7 +241,7 @@ class _PromptScreenState extends State<PromptScreen> {
                     borderRadius: BorderRadius.circular(12.0),
                     color: const Color(0xFFFFFFFF),
                     border: Border.all(
-                      color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                      color: const Color(0xFF155FFF).withOpacity(0.8),
                       width: 0.2,
                     ),
                   ),
@@ -286,7 +302,7 @@ class _PromptScreenState extends State<PromptScreen> {
                     borderRadius: BorderRadius.circular(12.0),
                     color: const Color(0xFFFFFFFF),
                     border: Border.all(
-                      color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                      color: const Color(0xFF155FFF).withOpacity(0.8),
                       width: 0.2,
                     ),
                   ),
@@ -297,7 +313,7 @@ class _PromptScreenState extends State<PromptScreen> {
                             height: 50.0,
                             width: 50.0,
                             decoration: BoxDecoration(
-                              color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                              color: const Color(0xFF155FFF).withOpacity(0.8),
                               shape: BoxShape.circle,
                             ),
                             child: const CircularProgressIndicator(
@@ -320,7 +336,7 @@ class _PromptScreenState extends State<PromptScreen> {
                     padding: const EdgeInsets.symmetric(vertical: 15.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
-                      color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                      color: const Color(0xFF155FFF).withOpacity(0.8),
                     ),
 
                     // Submit text centered

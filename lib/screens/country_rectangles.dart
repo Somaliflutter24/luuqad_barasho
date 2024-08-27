@@ -71,7 +71,7 @@ class _CountryRectanglesState extends State<CountryRectangles> {
               side: BorderSide(
                 color: isSelected
                     ? Colors.transparent
-                    : const Color(0xFF6D1B7B).withOpacity(0.8),
+                    : const Color(0xFF155FFF).withOpacity(0.8),
                 width: 0.4,
               ),
             ),

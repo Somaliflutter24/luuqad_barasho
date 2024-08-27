@@ -39,6 +39,7 @@ dependencies:
   flutter_dotenv: ^5.1.0
   google_generative_ai: ^0.4.4
   flutter_tts: ^4.0.2
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
