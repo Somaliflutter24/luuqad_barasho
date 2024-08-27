@@ -24,7 +24,7 @@ class _LanguageDropdownState extends State<LanguageDropdown> {
     {'countryLanguage': 'Russian', 'countryImage': 'assets/images/russia.png'},
     {'countryLanguage': 'Italian', 'countryImage': 'assets/images/italy.png'},
     {'countryLanguage': 'German', 'countryImage': 'assets/images/germany.png'},
-    {'countryLanguage': 'French', 'countryImage': 'assets/images/france.png'},
+    {'countryLanguage': 'somali', 'countryImage': 'assets/images/somali.png'},
     {'countryLanguage': 'Spanish', 'countryImage': 'assets/images/spain.png'},
   ];
 

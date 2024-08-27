@@ -24,14 +24,14 @@ class _PromptScreenState extends State<PromptScreen> {
   String _translatedText = '';
   bool _loading = false;
 
-  // Function to update the state of the slected langauge from
+  // Function to update the state of the selected language from
   void _handleLanguageChangeFrom(String? newCountry) {
     setState(() {
       selectedCountryFrom = newCountry;
     });
   }
 
-  // Function to update the state of the slected langauge to
+  // Function to update the state of the selected language to
   void _handleLanguageChangeTo(String? newCountry) {
     setState(() {
       selectedCountryTo = newCountry;
@@ -39,7 +39,7 @@ class _PromptScreenState extends State<PromptScreen> {
   }
 
   Future<void> _translateText() async {
-    final apiKey = dotenv.env['AIzaSyAc1lh3FDcVW1u-8OxkBsRpl3T0x57Sxao'];
+    final apiKey = dotenv.env['API_KEY'];
     if (apiKey == null) {
       print('No API_KEY environment variable');
       return;
@@ -104,243 +104,244 @@ class _PromptScreenState extends State<PromptScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFFF0F0F0),
 
-      // Padding around contents
-      body: Padding(
-        padding: const EdgeInsets.only(top: 50.0, left: 16.0, right: 16.0),
+      // Add SingleChildScrollView to make the content scrollable
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 50.0, left: 16.0, right: 16.0),
 
-        // Column starts here
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // Container for text translation and text_field icon
-            Container(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 20, horizontal: 10.0),
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: const Color(0xFF6D1B7B).withOpacity(0.8),
-                    width: 0.2,
+          // Column starts here
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // Container for text translation and text_field icon
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10.0),
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                      width: 0.2,
+                    ),
                   ),
+                ),
+
+                //  Text translation and text_field icon in a row
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Text translation
+                    Text(
+                      "Luuqad Barasho",
+                      style: GoogleFonts.poppins(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w300,
+                        color: const Color(0xFF000000),
+                      ),
+                    ),
+
+                    // text_field icon
+                    const Icon(
+                      Icons.settings_outlined,
+                      color: Color(0xFF000000),
+                      size: 24.0,
+                    ),
+                  ],
                 ),
               ),
 
-              //  Text translation and text_field icon in a row
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Text translation
-                  Text(
-                    "Luuqad Barasho",
-                    style: GoogleFonts.poppins(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w300,
-                      color: const Color(0xFF000000),
+              // Padding around language dropdowns and swap_horiz icon
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+
+                // language dropdowns and swap_horiz icon in a row
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // language dropdown from
+
+                    LanguageDropdown(
+                        onLanguageChanged: _handleLanguageChangeFrom),
+
+                    // Swap_horiz icon
+                    Icon(
+                      Icons.swap_horiz_rounded,
+                      color: const Color(0xFF6D1B7B).withOpacity(0.3),
                     ),
-                  ),
 
-                  // text_field icon
-                  const Icon(
-                    Icons.settings_outlined,
-                    color: Color(0xFF000000),
-                    size: 24.0,
-                  ),
-                ],
+                    // language dropdowns to
+                    LanguageDropdown(onLanguageChanged: _handleLanguageChangeTo),
+                  ],
+                ),
               ),
-            ),
 
-            // Padding around language dropdowns and swap_horiz icon
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
+              // Padding around the selected language from
+              Padding(
+                padding: const EdgeInsets.only(top: 5.0, left: 5.0),
 
-              // language dropdowns and swap_horiz icon in a row
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // language dropdown from
-
-                  LanguageDropdown(
-                      onLanguageChanged: _handleLanguageChangeFrom),
-
-                  // Swap_horiz icon
-                  Icon(
-                    Icons.swap_horiz_rounded,
-                    color: const Color(0xFF6D1B7B).withOpacity(0.3),
-                  ),
-
-                  // language dropdowns to
-                  LanguageDropdown(onLanguageChanged: _handleLanguageChangeTo),
-                ],
-              ),
-            ),
-
-            // Padding around the selected language from
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0, left: 10.0),
-
-              // The selected language from in a row
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  RichText(
-                    text: TextSpan(
-                      style: GoogleFonts.poppins(
-                        height: 1.6,
-                      ),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Translate From ',
-                          style: GoogleFonts.poppins(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w300,
-                            color: const Color(0xFF000000),
-                          ),
+                // The selected language from in a row
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                        style: GoogleFonts.poppins(
+                          height: 1.6,
                         ),
-                        if (selectedCountryFrom != null)
+                        children: <TextSpan>[
                           TextSpan(
-                            text: '$selectedCountryFrom',
+                            text: 'Translate From ',
                             style: GoogleFonts.poppins(
                               fontSize: 14.0,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w300,
                               color: const Color(0xFF000000),
                             ),
                           ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            // Padding around the container for translate from
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-
-              // Container for translate from
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 222.0,
-                padding: const EdgeInsets.all(12.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.0),
-                  color: const Color(0xFFFFFFFF),
-                  border: Border.all(
-                    color: const Color(0xFF6D1B7B).withOpacity(0.8),
-                    width: 0.2,
-                  ),
-                ),
-
-                // Translatefrom class here
-                child: TranslateFrom(controller: controller),
-              ),
-            ),
-
-            // Padding around the selected language to
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0, left: 10.0),
-
-              // The selected language to in a row
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  RichText(
-                    text: TextSpan(
-                      style: GoogleFonts.poppins(
-                        height: 1.6,
-                      ),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Translate To ',
-                          style: GoogleFonts.poppins(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w300,
-                            color: const Color(0xFF000000),
-                          ),
-                        ),
-                        if (selectedCountryTo != null)
-                          TextSpan(
-                            text: '$selectedCountryTo',
-                            style: GoogleFonts.poppins(
-                              fontSize: 14.0,
-                              fontWeight: FontWeight.bold,
-                              color: const Color(0xFF000000),
+                          if (selectedCountryFrom != null)
+                            TextSpan(
+                              text: '$selectedCountryFrom',
+                              style: GoogleFonts.poppins(
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.bold,
+                                color: const Color(0xFF000000),
+                              ),
                             ),
-                          ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-
-            // Padding around the selected language to
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-
-              // Container for translate to
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 162.0,
-                padding: const EdgeInsets.all(12.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.0),
-                  color: const Color(0xFFFFFFFF),
-                  border: Border.all(
-                    color: const Color(0xFF6D1B7B).withOpacity(0.8),
-                    width: 0.2,
-                  ),
+                  ],
                 ),
-                child: _loading
-                    ? Center(
-                        child: Container(
-                          padding: const EdgeInsets.all(12.0),
-                          height: 50.0,
-                          width: 50.0,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF6D1B7B).withOpacity(0.8),
-                            shape: BoxShape.circle,
-                          ),
-                          child: const CircularProgressIndicator(
-                            color: Color(0xFFFFFFFF),
-                          ),
-                        ),
-                      )
-                    : TranslateTo(translatedText: _translatedText),
               ),
-            ),
 
-            // Container for submit button in padding
-            Padding(
-              padding: const EdgeInsets.only(top: 35.0),
-              child: GestureDetector(
-                onTap: _translateText,
+              // Padding around the container for translate from
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
 
-                // Container for submit button
+                // Container for translate from
                 child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 15.0),
+                  width: MediaQuery.of(context).size.width,
+                  height: 222.0,
+                  padding: const EdgeInsets.all(12.0),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                    borderRadius: BorderRadius.circular(12.0),
+                    color: const Color(0xFFFFFFFF),
+                    border: Border.all(
+                      color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                      width: 0.2,
+                    ),
                   ),
 
-                  // Submit text centered
-                  child: Center(
-                    // Submit text here
-                    child: Text(
-                      'Submit',
-                      style: GoogleFonts.inter(
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.bold,
-                        color: const Color(0xFFFFFFFF),
+                  // TranslateFrom class here
+                  child: TranslateFrom(controller: controller),
+                ),
+              ),
+
+              // Padding around the selected language to
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0, left: 10.0),
+
+                // The selected language to in a row
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                        style: GoogleFonts.poppins(
+                          height: 1.6,
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Translate To ',
+                            style: GoogleFonts.poppins(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w300,
+                              color: const Color(0xFF000000),
+                            ),
+                          ),
+                          if (selectedCountryTo != null)
+                            TextSpan(
+                              text: '$selectedCountryTo',
+                              style: GoogleFonts.poppins(
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.bold,
+                                color: const Color(0xFF000000),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Padding around the selected language to
+              Padding(
+                padding: const EdgeInsets.only(top: 5.0),
+
+                // Container for translate to
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 162.0,
+                  padding: const EdgeInsets.all(12.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.0),
+                    color: const Color(0xFFFFFFFF),
+                    border: Border.all(
+                      color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                      width: 0.2,
+                    ),
+                  ),
+                  child: _loading
+                      ? Center(
+                          child: Container(
+                            padding: const EdgeInsets.all(12.0),
+                            height: 50.0,
+                            width: 50.0,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                              shape: BoxShape.circle,
+                            ),
+                            child: const CircularProgressIndicator(
+                              color: Color(0xFFFFFFFF),
+                            ),
+                          ),
+                        )
+                      : TranslateTo(translatedText: _translatedText),
+                ),
+              ),
+
+              // Container for submit button in padding
+              Padding(
+                padding: const EdgeInsets.only(top: 35.0),
+                child: GestureDetector(
+                  onTap: _translateText,
+
+                  // Container for submit button
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 15.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                    ),
+
+                    // Submit text centered
+                    child: Center(
+                      // Submit text here
+                      child: Text(
+                        'Submit',
+                        style: GoogleFonts.inter(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.bold,
+                          color: const Color(0xFFFFFFFF),
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
+          // Column ends here
         ),
-        // Column ends here
       ),
     );
   }

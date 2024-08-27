@@ -80,7 +80,7 @@ class _TranslateFromState extends State<TranslateFrom> {
             hintText: 'Have something to translate?',
             hintStyle: GoogleFonts.poppins(
               fontSize: 28.0,
-              color: const Color(0xFF6D1B7B).withOpacity(0.1),
+              color: const Color(0xFF1556E4).withOpacity(0.1),
             ),
             enabledBorder: InputBorder.none,
             focusedBorder: InputBorder.none,
@@ -95,7 +95,7 @@ class _TranslateFromState extends State<TranslateFrom> {
           decoration: BoxDecoration(
             border: Border(
               top: BorderSide(
-                color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                color: const Color(0xFF1556E4).withOpacity(0.8),
                 width: 0.2,
               ),
             ),
@@ -115,7 +115,7 @@ class _TranslateFromState extends State<TranslateFrom> {
                 onTap: _handleVolumeUpTap,
                 child: Icon(
                   Icons.volume_up_outlined,
-                  color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                  color: const Color(0xFF1556E4).withOpacity(0.8),
                 ),
               ),
             ],

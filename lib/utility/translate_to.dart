@@ -56,7 +56,7 @@ class _TranslateToState extends State<TranslateTo> {
           decoration: BoxDecoration(
             border: Border(
               top: BorderSide(
-                color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                color: const Color(0xFF1556E4).withOpacity(0.8),
                 width: 0.2,
               ),
             ),
@@ -69,7 +69,7 @@ class _TranslateToState extends State<TranslateTo> {
                 onTap: () => _copyToClipboard(widget.translatedText),
                 child: Icon(
                   Icons.copy_all_outlined,
-                  color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                  color: const Color(0xFF1556E4).withOpacity(0.8),
                 ),
               ),
               const SizedBox(
@@ -79,7 +79,7 @@ class _TranslateToState extends State<TranslateTo> {
                 onTap: _handleVolumeUpTap,
                 child: Icon(
                   Icons.volume_up_outlined,
-                  color: const Color(0xFF6D1B7B).withOpacity(0.8),
+                  color: const Color(0xFF1556E4).withOpacity(0.8),
                 ),
               ),
             ],

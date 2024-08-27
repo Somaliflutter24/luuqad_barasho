@@ -115,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Container(
                           padding: const EdgeInsets.all(8.0),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF6D1B7B).withOpacity(0.3),
+                            color: Color(0xFF155FFF).withOpacity(0.3),
                             shape: BoxShape.circle,
                           ),
 
@@ -134,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               // Arrow forward
                               child: Icon(
                                 Icons.arrow_forward,
-                                color: const Color(0xFF6D1B7B).withOpacity(0.3),
+                                color: Color(0xFF1556E4).withOpacity(0.3),
                               ),
                             ),
                           ),
