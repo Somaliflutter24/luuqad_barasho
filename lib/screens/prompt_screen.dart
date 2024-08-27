@@ -43,6 +43,7 @@ class _PromptScreenState extends State<PromptScreen> {
     final apiKey = dotenv.env['API_KEY'];
     if (apiKey == null) {
       print('No API_KEY environment variable');
+      print('API_KEY: ${dotenv.env['API_KEY']}');
       return;
     }
 
@@ -116,7 +117,8 @@ class _PromptScreenState extends State<PromptScreen> {
             children: [
               // Container for text translation and text_field icon
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10.0),
                 decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
@@ -141,11 +143,7 @@ class _PromptScreenState extends State<PromptScreen> {
                     ),
 
                     // text_field icon
-                     IconButton(
-                      icon: Icon(
-                        Icons.settings_outlined,
-                        color: const Color(0xFF155FFF).withOpacity(0.3),
-                      ),
+                    IconButton(
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -156,10 +154,12 @@ class _PromptScreenState extends State<PromptScreen> {
                           ),
                         );
                       },
-                      
-                      
+                      icon: Icon(
+                        Icons.settings_outlined,
+                        color: const Color(0xFF155FFF).withOpacity(0.3),
+                      ),
+
                       color: Color(0xFF000000),
-                      
                     ),
                   ],
                 ),
@@ -185,7 +185,8 @@ class _PromptScreenState extends State<PromptScreen> {
                     ),
 
                     // language dropdowns to
-                    LanguageDropdown(onLanguageChanged: _handleLanguageChangeTo),
+                    LanguageDropdown(
+                        onLanguageChanged: _handleLanguageChangeTo),
                   ],
                 ),
               ),
@@ -360,5 +361,7 @@ class _PromptScreenState extends State<PromptScreen> {
         ),
       ),
     );
+
+
   }
 }
